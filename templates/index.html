@@ -1,5 +1,8 @@
 {% extends "layout.html" %}
 {% block body %}
-<canvas id="coffee-cup" height="300" width="250"></canvas>
+<div id="desk">
+  <canvas id="laptop" height="500" width="500"></canvas>
+  <canvas id="coffee-cup" height="175" width="125"></canvas>
+</div>
 <script type="text/javascript" src="{{url_for('static', filename='main.js')}}"></script>
 {% endblock %}

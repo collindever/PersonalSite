@@ -1,10 +1,24 @@
+#desk {
+  width:90%;
+  margin 0 auto;
+}
+
 #coffee-cup {
-  margin: auto;
+  /*margin: auto;
   position: absolute;
   top:0;
   bottom: 0;
   left: 0;
-  right: 0;
+  right: 0;*/
+}
+
+#laptop {
+margin: auto;
+position: absolute;
+top:0;
+bottom: 25%;
+left: 25%;
+right: 0;
 }
 
 h1 {
