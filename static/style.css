@@ -4,21 +4,17 @@
 }
 
 #coffee-cup {
-  /*margin: auto;
-  position: absolute;
-  top:0;
-  bottom: 0;
-  left: 0;
-  right: 0;*/
+  position: relative;
+  padding-left: 2%;
+  left: 25%;
 }
 
 #laptop {
-margin: auto;
-position: absolute;
-top:0;
-bottom: 25%;
-left: 25%;
-right: 0;
+  position: relative;
+  top:0;
+  bottom: 25%;
+  left: 40%;
+  right: 0;
 }
 
 h1 {
