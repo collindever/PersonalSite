@@ -1,5 +1,10 @@
 #desk {
+  position: fixed;
   width:90%;
+  height: 100%;
+  left: 5%;
+  top: 0;
+  background-color: #679e4c;
   margin 0 auto;
 }
 
@@ -15,6 +20,12 @@
   bottom: 25%;
   left: 40%;
   right: 0;
+}
+
+#papers {
+  position: relative;
+  right: 30%;
+  padding-right: 2%
 }
 
 h1 {

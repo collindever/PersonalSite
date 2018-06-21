@@ -1,5 +1,7 @@
 var cupCanvas = document.getElementById('coffee-cup');
 var laptopCanvas = document.getElementById('laptop');
+var papersCanvas = document.getElementById('papers');
+
 var creamAngle = Math.PI / 180;
 var creamRadius = 35;
 var creamX = 100;
@@ -14,6 +16,7 @@ var cy = 60;
 function init(){
   drawLaptop();
   window.requestAnimationFrame(drawCoffeeCup);
+  drawPapers();
 }
 
 function drawCoffeeCup(){
@@ -146,6 +149,52 @@ function drawLaptop(){
     laptop.lineTo(345,115);
     laptop.lineTo(35,115);
     laptop.fill();
+  }
+}
+
+function drawPapers(){
+  if (papersCanvas.getContext) {
+    var papers = papersCanvas.getContext('2d');
+    papers.rotate(5*Math.PI/180);
+    papers.globalCompositeOperation='source-over';
+
+    //make the bottom paper
+    papers.fillStyle = '#FFEEDD';
+    papers.beginPath();
+    papers.moveTo(40,40);
+    papers.lineTo(150,40);
+    papers.lineTo(150,190);
+    papers.lineTo(40,190);
+    papers.fill();
+
+    papers.rotate(5*Math.PI/180);
+
+    //make the middle paper
+    papers.fillStyle = '#FFEEDD';
+    papers.beginPath();
+    papers.moveTo(58,38);
+    papers.lineTo(163,38);
+    papers.lineTo(163,188);
+    papers.lineTo(58,188);
+    papers.lineTo(58,38);
+    papers.fill();
+    papers.strokeStyle = '#000000';
+    papers.lineWidth = 0.25;
+    papers.stroke();
+
+    papers.rotate(5*Math.PI/180);
+    //make the top paper
+    papers.fillStyle = '#FFEEDD';
+    papers.beginPath();
+    papers.moveTo(75,40);
+    papers.lineTo(180,40);
+    papers.lineTo(180,185);
+    papers.lineTo(75,185);
+    papers.lineTo(75,40);
+    papers.fill();
+    papers.strokeStyle = '#000000';
+    papers.lineWidth = 0.25;
+    papers.stroke();
   }
 }
 
