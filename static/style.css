@@ -24,8 +24,15 @@
 
 #papers {
   position: relative;
-  right: 30%;
-  padding-right: 2%
+  right: 40%;
+  padding-right: 2%;
+}
+
+#picture-frame {
+  position: relative;
+  right: 50%;
+  bottom: 40%;
+  padding-right: 2%;
 }
 
 h1 {
