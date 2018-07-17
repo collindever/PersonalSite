@@ -1,44 +1,45 @@
 #desk {
   position: fixed;
-  width:90%;
-  height: 100%;
-  left: 5%;
-  top: 0;
+  width:95%;
+  height: 98%;
+  left: 2.5%;
+  top: 1%;
   background-color: #679e4c;
-  margin 0 auto;
 }
 
 #coffee-cup {
-  position: relative;
-  padding-left: 2%;
-  left: 25%;
+  position: fixed;
+  padding: 1%;
+  right: 10%;
+  bottom: 20%;
 }
 
 #laptop {
-  position: relative;
-  top:0;
-  bottom: 25%;
-  left: 40%;
-  right: 0;
+  position: fixed;
+  top:15%;
+  left: 50%;
+  padding: 1%;
 }
 
 #papers {
-  position: relative;
-  right: 40%;
-  padding-right: 2%;
+  position: fixed;
+  right: 50%;
+  bottom: 5%;
+  padding: 1%;
 }
 
 #picture-frame {
-  position: relative;
+  position: fixed;
   right: 50%;
-  bottom: 40%;
-  padding-right: 2%;
+  bottom: 45%;
+  padding: 1%;
 }
 
 #solder-iron {
-  position: relative;
+  position: fixed;
   left: 75%;
-  bottom: 65%;
+  top: 15%;
+  padding: 1%;
 }
 
 h1 {

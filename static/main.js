@@ -5,14 +5,14 @@ var frameCanvas = document.getElementById('picture-frame');
 var solderCanvas = document.getElementById('solder-iron');
 
 var creamAngle = Math.PI / 180;
-var creamRadius = 35;
-var creamX = 100;
-var creamY = 60;
+var creamRadius = 15;
+var creamX = 65;
+var creamY = 40;
 var creamAcceleration = 1;
 var accelerateCream = false;
 var t = 0;
-var cx = 70;
-var cy = 60;
+var cx = 47;
+var cy = 40;
 
 
 function init(){
@@ -20,7 +20,11 @@ function init(){
   window.requestAnimationFrame(drawCoffeeCup);
   drawPapers();
   drawPictureFrame();
-  drawSolderIron()
+  drawSolderIron();
+
+  var desk = document.getElementById('desk');
+  var deskHeight = desk.outerHeight();
+  var deskWidth = desk.outerWidth();
 }
 
 function drawCoffeeCup(){
@@ -34,38 +38,38 @@ function drawCoffeeCup(){
 
     // make the bottom of the cup
     cup.beginPath();
-    cup.arc(60,125,35,.8,3.5);
+    cup.arc(42.5,75,17,.8,3.2);
     cup.closePath();
-    cup.fillStyle = '#c7cb74';
+    cup.fillStyle = '#e3e89f';
     cup.fill();
 
     //make the cup sides
-    cup.fillStyle = '#c7cb74';
+    cup.fillStyle = '#e3e89f';
     cup.beginPath();
-    cup.moveTo(20,80);
-    cup.lineTo(110,90);
-    cup.lineTo(84,150);
-    cup.lineTo(25,120);
+    cup.moveTo(20,50);
+    cup.lineTo(68,65);
+    cup.lineTo(55,87);
+    cup.lineTo(25,75);
     cup.fill();
 
     // put the coffee in the cup
     cup.fillStyle = '#522f2e';
     cup.beginPath();
-    cup.arc(70,60,50,0,2*Math.PI);
+    cup.arc(47,40,30,0,2*Math.PI);
     cup.fill();
 
     // make the cup rim
-    var radGrd = cup.createRadialGradient(70,60,50,70,60,45);
-    radGrd.addColorStop(0,"#f5f5ad");
+    var radGrd = cup.createRadialGradient(47,40,30,47,40,2);
+    radGrd.addColorStop(0,"#f5fabb");
     radGrd.addColorStop(1,"white");
     cup.strokeStyle = radGrd;
-    cup.lineWidth = 10;
+    cup.lineWidth = 5;
     cup.stroke();
 
     //add the cream
-    cup.fillStyle = '#f9face';
+    cup.fillStyle = '#fdffdd';
     cup.beginPath();
-    cup.arc(creamX,creamY,5,0,2*Math.PI);
+    cup.arc(creamX,creamY,3,0,2*Math.PI);
     cup.fill();
 
     window.requestAnimationFrame(drawCoffeeCup);
@@ -374,11 +378,6 @@ function drawSolderIron(){
     iron.beginPath();
     iron.arc(45,50,8,0,2*Math.PI);
     iron.stroke();
-
-    iron.fillStyle = '#d6d6c9';
-    iron.beginPath();
-    iron.arc(45,50,2,0,2*Math.PI);
-    iron.fill();
 
     //make the cord
     iron.strokeStyle = '#333331';
