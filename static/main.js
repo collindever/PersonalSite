@@ -21,10 +21,6 @@ function init(){
   drawPapers();
   drawPictureFrame();
   drawSolderIron();
-
-  var desk = document.getElementById('desk');
-  var deskHeight = desk.outerHeight();
-  var deskWidth = desk.outerWidth();
 }
 
 function drawCoffeeCup(){

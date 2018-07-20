@@ -14,6 +14,10 @@ html, body{
   margin-left: 2%;
 }
 
+#nav>h2:hover{
+  background-color: #3D8A3D;
+}
+
 #desk {
   display: inline-flex;
   height: 100%;
@@ -56,5 +60,6 @@ html, body{
 
 h1, h2 {
   font-family: 'Lato', sans-serif;
+  display: table;
   color: #FFFACF;
 }
