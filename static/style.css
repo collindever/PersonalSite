@@ -1,37 +1,49 @@
-#desk {
-  position: fixed;
-  width:95%;
+html, body{
   height: 98%;
+  background-color: #61A562;
+}
+
+#top-fold {
+  min-width:95%;
+  min-height: 95%;
   left: 2.5%;
-  top: 1%;
-  background-color: #679e4c;
+}
+
+#nav {
+  display: inline-block;
+  margin-left: 2%;
+}
+
+#desk {
+  display: inline-flex;
+  height: 100%;
 }
 
 #coffee-cup {
   position: fixed;
   padding: 1%;
-  right: 10%;
-  bottom: 20%;
+  right: 15%;
+  bottom: 25%;
 }
 
 #laptop {
   position: fixed;
-  top:15%;
-  left: 50%;
+  bottom:10%;
+  right: 25%;
   padding: 1%;
 }
 
 #papers {
   position: fixed;
-  right: 50%;
+  left: 15%;
   bottom: 5%;
   padding: 1%;
 }
 
 #picture-frame {
   position: fixed;
-  right: 50%;
-  bottom: 45%;
+  left: 25%;
+  top: 25%;
   padding: 1%;
 }
 
@@ -42,11 +54,7 @@
   padding: 1%;
 }
 
-h1 {
-  text-align: center;
+h1, h2 {
   font-family: 'Lato', sans-serif;
-}
-
-h2 {
-  font-family: 'Lato', sans-serif;
+  color: #FFFACF;
 }
