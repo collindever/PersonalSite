@@ -1,0 +1,65 @@
+html, body{
+  height: 98%;
+  background-color: #61a570;
+}
+
+#top-fold {
+  min-width:95%;
+  min-height: 95%;
+  left: 2.5%;
+}
+
+#nav {
+  display: inline-block;
+  margin-left: 2%;
+}
+
+#nav>h2:hover{
+  background-color: #3A884F;
+}
+
+#desk {
+  display: inline-flex;
+  height: 100%;
+}
+
+#coffee-cup {
+  position: fixed;
+  padding: 1%;
+  right: 15%;
+  bottom: 25%;
+}
+
+#laptop {
+  position: fixed;
+  bottom:10%;
+  right: 25%;
+  padding: 1%;
+}
+
+#papers {
+  position: fixed;
+  left: 15%;
+  bottom: 5%;
+  padding: 1%;
+}
+
+#picture-frame {
+  position: fixed;
+  left: 25%;
+  top: 25%;
+  padding: 1%;
+}
+
+#solder-iron {
+  position: fixed;
+  left: 75%;
+  top: 15%;
+  padding: 1%;
+}
+
+h1, h2 {
+  font-family: 'Lato', sans-serif;
+  display: table;
+  color: #fffbda;
+}
