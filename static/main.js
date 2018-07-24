@@ -36,11 +36,11 @@ function drawCoffeeCup(){
     cup.beginPath();
     cup.arc(42.5,75,17,.8,3.2);
     cup.closePath();
-    cup.fillStyle = '#e3e89f';
+    cup.fillStyle = '#e8e29f';
     cup.fill();
 
     //make the cup sides
-    cup.fillStyle = '#e3e89f';
+    cup.fillStyle = '#e8e29f';
     cup.beginPath();
     cup.moveTo(20,50);
     cup.lineTo(68,65);
@@ -56,7 +56,7 @@ function drawCoffeeCup(){
 
     // make the cup rim
     var radGrd = cup.createRadialGradient(47,40,30,47,40,2);
-    radGrd.addColorStop(0,"#f5fabb");
+    radGrd.addColorStop(0,"#fbffcd");
     radGrd.addColorStop(1,"white");
     cup.strokeStyle = radGrd;
     cup.lineWidth = 5;
@@ -106,13 +106,13 @@ function drawLaptop(){
     laptop.arc(50,300,10,Math.PI/2, Math.PI);
     laptop.lineTo(40,160);
     laptop.fill();
-    laptop.strokeStyle = '#88887d';
+    laptop.strokeStyle = '#9c9c9c';
     laptop.lineWidth = 5;
     laptop.lineJoin = "round";
     laptop.stroke();
 
     //add mousepad
-    laptop.fillStyle = '#88887d';
+    laptop.fillStyle = '#9c9c9c';
     laptop.beginPath();
     laptop.moveTo(155,305);
     laptop.lineTo(225,305);
@@ -121,7 +121,7 @@ function drawLaptop(){
     laptop.fill();
 
     //add keyboard
-    laptop.fillStyle = '#88887d';
+    laptop.fillStyle = '#9c9c9c';
     laptop.beginPath();
     laptop.moveTo(45,255);
     laptop.lineTo(335,255);
@@ -140,7 +140,7 @@ function drawLaptop(){
     laptop.arc(45,30,20,3*Math.PI/2,Math.PI,1);
     laptop.lineTo(40,160);
     laptop.fill();
-    laptop.strokeStyle = '#88887d';
+    laptop.strokeStyle = '#9c9c9c';
     laptop.lineWidth = 5;
     laptop.lineJoin = "round";
     laptop.stroke();
@@ -183,7 +183,7 @@ function drawPapers(){
     papers.lineTo(58,38);
     papers.fill();
     papers.strokeStyle = '#000000';
-    papers.lineWidth = 0.25;
+    papers.lineWidth = 0.45;
     papers.stroke();
 
     papers.rotate(5*Math.PI/180);
@@ -197,7 +197,7 @@ function drawPapers(){
     papers.lineTo(75,40);
     papers.fill();
     papers.strokeStyle = '#000000';
-    papers.lineWidth = 0.25;
+    papers.lineWidth = 0.45;
     papers.stroke();
   }
 }

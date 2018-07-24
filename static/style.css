@@ -1,6 +1,6 @@
 html, body{
   height: 98%;
-  background-color: #61A562;
+  background-color: #61a570;
 }
 
 #top-fold {
@@ -15,7 +15,7 @@ html, body{
 }
 
 #nav>h2:hover{
-  background-color: #3D8A3D;
+  background-color: #3A884F;
 }
 
 #desk {
@@ -61,5 +61,5 @@ html, body{
 h1, h2 {
   font-family: 'Lato', sans-serif;
   display: table;
-  color: #FFFACF;
+  color: #fffbda;
 }
