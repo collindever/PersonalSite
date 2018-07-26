@@ -2,5 +2,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import Desk from "./Desk";
 
-ReactDOM.render(<App />, document.getElementById("content"));
+ReactDOM.render(<Desk />, document.getElementById("desk"));
