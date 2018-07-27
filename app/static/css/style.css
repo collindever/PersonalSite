@@ -23,7 +23,7 @@ html, body{
   height: 100%;
 }
 
-#coffee-cup {
+#coffeeCup {
   position: fixed;
   padding: 1%;
   right: 15%;
@@ -44,14 +44,14 @@ html, body{
   padding: 1%;
 }
 
-#picture-frame {
+#pictureFrame {
   position: fixed;
   left: 25%;
   top: 25%;
   padding: 1%;
 }
 
-#solder-iron {
+#solderIron {
   position: fixed;
   left: 75%;
   top: 15%;
