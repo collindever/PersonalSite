@@ -26,5 +26,8 @@
       "es2015",
       "react"
     ]
+  },
+  "dependencies": {
+    "webfontloader": "^1.6.28"
   }
 }

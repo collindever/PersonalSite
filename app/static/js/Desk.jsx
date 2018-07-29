@@ -5,6 +5,7 @@ import CoffeeCup from './deskComponents/CoffeeCup';
 import Papers from './deskComponents/Papers';
 import PictureFrame from './deskComponents/PictureFrame';
 import SolderIron from './deskComponents/SolderIron';
+import SolderIronOverlay from './deskComponents/SolderIronOverlay';
 
 export default class Desk extends Component {
   render () {
@@ -15,6 +16,7 @@ export default class Desk extends Component {
         <Papers />
         <PictureFrame />
         <SolderIron />
+        <SolderIronOverlay />
       </div>
     );
   }

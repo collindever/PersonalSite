@@ -12,6 +12,9 @@ export default class CoffeeCup extends Component {
       requestAnimationFrame(this.updateCanvas);
   }
 
+  componentDidUpdate() {
+      requestAnimationFrame(this.updateCanvas);
+  }
 
   updateCanvas() {
       const cup = this.refs.coffeeCup.getContext('2d');

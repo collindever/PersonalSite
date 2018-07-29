@@ -58,6 +58,14 @@ html, body{
   padding: 1%;
 }
 
+#solderIronOverlay {
+  position: fixed;
+  left: 75%;
+  top: 15%;
+  padding: 1%;
+  z-index: 1;
+}
+
 h1, h2 {
   font-family: 'Lato', sans-serif;
   display: table;
