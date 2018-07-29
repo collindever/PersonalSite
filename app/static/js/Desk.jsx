@@ -16,7 +16,7 @@ export default class Desk extends Component {
         <Papers />
         <PictureFrame />
         <SolderIron />
-        <SolderIronOverlay />
+        <SolderIronOverlay on={this.props.hardwareOn} />
       </div>
     );
   }

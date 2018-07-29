@@ -1,14 +1,10 @@
 import React, {Component} from 'react';
 
-// function sleep(ms) {
-//   return new Promise(resolve => setTimeout(resolve, ms));
-// }
-
 export default class SolderIronOverlay extends Component {
 
   constructor(props) {
       super(props);
-      this.state = {On: false, maxTempReached: false, maxTemp: 750, temp: 100};
+      this.state = {On: this.props.on, maxTempReached: false, maxTemp: 750, temp: 100};
       // this.updateCanvas = this.updateCanvas.bind(this);
       this.drawOn = this.drawOn.bind(this);
       this.drawOff = this.drawOff.bind(this);
