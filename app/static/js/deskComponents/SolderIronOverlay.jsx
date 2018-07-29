@@ -31,7 +31,6 @@ export default class SolderIronOverlay extends Component {
 
   onClick() {
     this.state.On = this.state.On ? false : true;
-    console.log("Click registered " + this.state.On);
     if(this.state.On){
       this.animateOn();
     }else {
@@ -70,16 +69,13 @@ export default class SolderIronOverlay extends Component {
 
   animateOn() {
     requestAnimationFrame(this.drawOn);
-    console.log("Animation first step");
     setTimeout(this.drawOff, 1000);
-    console.log("Animation second step");
     setTimeout(this.increaseTemp, 1500);
-    console.log("Animation third step");
   }
 
   increaseTemp() {
     this.drawOff();
-    if(this.state.temp <= this.state.maxTemp ){
+    if(this.state.temp <= this.state.maxTemp && this.state.On){
       var iron = this.refs.solderIronOverlay.getContext('2d');
 
       iron.filter = 'blur(0px)';
@@ -99,11 +95,12 @@ export default class SolderIronOverlay extends Component {
 
       this.state.temp += 3;
       requestAnimationFrame(this.increaseTemp);
-    }else{
+    }else if (this.state.On) {
       this.state.temp = 100;
       this.drawOn();
+    }else{
+      this.state.temp = 250;
     }
-
   }
 
   render() {
