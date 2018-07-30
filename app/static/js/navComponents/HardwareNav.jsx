@@ -9,6 +9,7 @@ export default class HardwareNav extends Component {
 
   onClick(){
     console.log("click Registered");
+    this.props.onClickChange();
   }
 
   render() {

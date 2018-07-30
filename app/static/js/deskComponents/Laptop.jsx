@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 
 export default class Laptop extends Component {
   componentDidMount() {
+        const laptop = this.refs.laptop.getContext('2d');
+        laptop.rotate(5*Math.PI/180);
         this.updateCanvas();
     }
     componentDidUpdate() {
@@ -10,7 +12,6 @@ export default class Laptop extends Component {
 
     updateCanvas() {
         const laptop = this.refs.laptop.getContext('2d');
-        laptop.rotate(5*Math.PI/180);
         //make the bottom
         laptop.fillStyle = '#494941';
         laptop.beginPath();

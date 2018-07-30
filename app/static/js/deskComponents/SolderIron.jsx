@@ -6,9 +6,9 @@ export default class SolderIron extends Component {
     this.updateCanvas();
   }
 
-  componentDidUpdate() {
-    this.updateCanvas();
-  }
+  // componentDidUpdate() {
+  //   this.updateCanvas();
+  // }
 
   updateCanvas() {
     var iron = this.refs.solderIron.getContext('2d');

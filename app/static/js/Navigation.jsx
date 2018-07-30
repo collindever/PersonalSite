@@ -5,7 +5,7 @@ export default class Navigation extends Component {
   render () {
     return (
       <div id="nav">
-        <HardwareNav/>
+        <HardwareNav onClickChange={this.props.onHardwareClickChange}/>
         <h2>Software</h2>
         <h2>Data</h2>
         <h2>Resume</h2>

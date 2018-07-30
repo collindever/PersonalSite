@@ -18,8 +18,9 @@ export default class SolderIronOverlay extends Component {
   }
 
   componentDidUpdate() {
+    this.state.On = this.props.on;
     if(this.state.On){
-      this.darwOn();
+      this.animateOn();
     }else {
       this.drawOff()
     }
