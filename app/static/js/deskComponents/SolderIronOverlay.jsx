@@ -27,12 +27,7 @@ export default class SolderIronOverlay extends Component {
   }
 
   onClick() {
-    this.state.On = this.state.On ? false : true;
-    if(this.state.On){
-      this.animateOn();
-    }else {
-      this.drawOff();
-    }
+    this.props.onClickChange();
   }
 
   rotateCanvas() {

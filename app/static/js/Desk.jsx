@@ -16,7 +16,7 @@ export default class Desk extends Component {
         <Papers />
         <PictureFrame />
         <SolderIron />
-        <SolderIronOverlay on={this.props.hardwareOn} />
+        <SolderIronOverlay on={this.props.hardwareOn} onClickChange={this.props.onHardwareClickChange} />
       </div>
     );
   }
