@@ -66,8 +66,17 @@ html, body{
   z-index: 1;
 }
 
-h1, h2 {
+.project-list {
+  width: 100%;
+  margin-left: 15%;
+}
+
+h1, h2, h3 {
   font-family: 'Lato', sans-serif;
   display: table;
   color: #fffbda;
+}
+
+h3 {
+  font-size: 10pt;
 }

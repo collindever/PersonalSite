@@ -22,7 +22,7 @@ export default class SolderIronOverlay extends Component {
     if(this.state.On){
       this.animateOn();
     }else {
-      this.drawOff()
+      this.drawOff();
     }
   }
 
