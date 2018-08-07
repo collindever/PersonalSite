@@ -29,13 +29,15 @@ export default class ProjectNav extends Component {
         </div>
       )
     }else{
-      return null;
+      return (
+        <div class="project-list hide"></div>
+      )
     }
   }
 
   render() {
     return (
-      <div id={this.state.Name + '-nav'}>
+      <div id={this.state.Name + '-nav'} class="nav-element">
         <h2 onClick={this.onClick}>{this.state.Name}</h2>
         {this.ShowProjects()}
       </div>
