@@ -24,7 +24,15 @@ export default class ProjectNav extends Component {
       return (
         <div id= {this.state.Name + '-projects-list'} class="project-list">
           {this.state.projects.map(function(project){
-            return <h3 key={project}>{project}</h3>;
+            return <h3 key={project} class="project-list-item">{project}</h3>;
+          })}
+        </div>
+      )
+    }else if (this.state.projects.length > 0) {
+      return (
+        <div id= {this.state.Name + '-projects-list'} class="project-list hide">
+          {this.state.projects.map(function(project){
+            return <h3 key={project} class="project-list-item hide">{project}</h3>;
           })}
         </div>
       )

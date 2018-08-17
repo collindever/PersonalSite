@@ -66,19 +66,34 @@ html, body{
   z-index: 1;
 }
 
+#Adventure-nav {
+  margin-top: 15px;
+}
+
 .project-list {
+  visibility: visible;
   width: 100%;
   margin-left: 10%;
   height: auto;
   max-height: 40px;
   opacity: 1;
-  transition: max-height 350ms 0ms, opacity 250ms 150ms;
+  transition: max-height 500ms ease-in, opacity 250ms 250ms;
 }
 
 .project-list.hide {
-  transition: max-height 350ms 150ms, opacity 250ms 0ms;
+  transition: max-height 500ms 250ms ease-in, opacity 250ms 250ms;
   max-height: 0px;
   opacity: 0;
+  visibility: hidden;
+}
+
+.project-list-item {
+  height: auto;
+  max-height: 10px;
+}
+
+.project-list-item.hide {
+  max-height: 0px;
 }
 
 h1, h2, h3 {
@@ -87,11 +102,10 @@ h1, h2, h3 {
   color: #fffbda;
 }
 
-h3 {
-  font-size: 10pt;
-  height: auto;
+h2 {
+  margin: 6px;
 }
 
-h3.hide {
-  max-height: 0px;
+h3 {
+  font-size: 10pt;
 }
