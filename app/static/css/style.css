@@ -77,13 +77,21 @@ html, body{
   height: auto;
   max-height: 40px;
   opacity: 1;
-  transition: max-height 500ms ease-in, opacity 250ms 250ms;
+  transition: max-height 250ms ease-in, opacity 125ms 125ms;
 }
 
 .project-list.hide {
-  transition: max-height 500ms 250ms ease-in, opacity 250ms 250ms;
+  transition: max-height 250ms 125ms ease-in, opacity 125ms 125ms;
   max-height: 0px;
   opacity: 0;
+  visibility: hidden;
+}
+
+.project-list.hide.initial {
+  transition: max-height 250ms 125ms ease-in, opacity 125ms 125ms;
+  max-height: 0px;
+  opacity: 0;
+  margin-bottom: 15px;
   visibility: hidden;
 }
 

@@ -38,7 +38,7 @@ export default class ProjectNav extends Component {
       )
     }else{
       return (
-        <div id= {this.state.Name + '-projects-list'} class="project-list hide"></div>
+        <div id= {this.state.Name + '-projects-list'} class="project-list hide initial"></div>
       )
     }
   }
