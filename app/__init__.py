@@ -19,7 +19,7 @@ def create_app(config_filename):
     def getProjectNames():
         subDir = request.args.get('type')
         if subDir is not None:
-            projects = listdir("./content/" + subDir)
+            projects = listdir("./app/static/content/" + subDir)
             return dumps(projects)
 
     return app

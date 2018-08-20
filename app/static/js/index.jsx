@@ -1,15 +1,21 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { render } from 'react-dom';
-import WebFont from 'webfontloader';
 import TopFold from './TopFold';
 import Navigation from './Navigation';
 
-// WebFont.load({
-//   google: {
-//     families: ['Orbitron', 'Lato']
-//   }
-// });
+export default class Index extends Component {
+  constructor(props){
+    super(props);
+    this.state = {showContent : false, contentTopics: []};
+  }
+
+  render () {
+    return (
+      <TopFold/>
+    );
+  }
+}
 
 render((
-  <TopFold/>
+  <Index/>
 ), document.getElementById('app'));
