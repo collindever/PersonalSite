@@ -22,30 +22,30 @@ export default class ProjectNav extends Component {
   ShowProjects(){
     if(this.props.on && this.state.projects.length > 0){
       return (
-        <div id= {this.state.Name + '-projects-list'} class="project-list">
+        <div id= {this.state.Name + '-projects-list'} className="project-list">
           {this.state.projects.map(function(project){
-            return <h3 key={project} class="project-list-item">{project}</h3>;
+            return <h3 key={project} className="project-list-item">{project}</h3>;
           })}
         </div>
       )
     }else if (this.state.projects.length > 0) {
       return (
-        <div id= {this.state.Name + '-projects-list'} class="project-list hide">
+        <div id= {this.state.Name + '-projects-list'} className="project-list hide">
           {this.state.projects.map(function(project){
-            return <h3 key={project} class="project-list-item hide">{project}</h3>;
+            return <h3 key={project} className="project-list-item hide">{project}</h3>;
           })}
         </div>
       )
     }else{
       return (
-        <div id= {this.state.Name + '-projects-list'} class="project-list hide initial"></div>
+        <div id= {this.state.Name + '-projects-list'} className="project-list hide initial"></div>
       )
     }
   }
 
   render() {
     return (
-      <div id={this.state.Name + '-nav'} class="nav-element">
+      <div id={this.state.Name + '-nav'} className="nav-element">
         <h2 onClick={this.onClick}>{this.state.Name}</h2>
         {this.ShowProjects()}
       </div>

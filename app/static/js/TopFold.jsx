@@ -14,16 +14,16 @@ export default class TopFold extends Component {
     var newHardwareState = this.state.hardwareOn ? false : true;
     var newState = {hardwareOn : newHardwareState, softwareOn: this.state.softwareOn};
     this.setState(newState);
+    var showContent = newHardwareState || this.state.softwareOn ? true : false;
+    this.props.onContentChanged(newHardwareState, showContent, "Hardware");
   }
 
   handleSoftwareClick(on) {
     var newSoftwareState = this.state.softwareOn ? false : true;
     var newState = {hardwareOn: this.state.hardwareOn, softwareOn : newSoftwareState};
     this.setState(newState);
-  }
-
-  componentDidUpdate() {
-    console.log(this.state);
+    var showContent = newSoftwareState || this.state.hardwareOn ? true : false;
+    this.props.onContentChanged(newSoftwareState, showContent, "Software");
   }
 
   render () {
