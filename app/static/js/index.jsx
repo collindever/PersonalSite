@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { render } from 'react-dom';
 import TopFold from './TopFold';
 import Navigation from './Navigation';
+import Content from './Content'
 
 export default class Index extends Component {
   constructor(props){
@@ -10,28 +11,28 @@ export default class Index extends Component {
     this.showContentChange = this.showContentChange.bind(this);
   }
 
-  componentDidUpdate(){
-    console.log(this.state);
-  }
-
   showContentChange(add, showContent, contentTopic){
-    this.state.showContent = showContent;
+    var tempTopics = this.state.contentTopics;
+    console.log("Index contentTopics: " + this.state.contentTopics);
     if(add){
-      this.state.contentTopics.push(contentTopic);
+      tempTopics.push(contentTopic);
     }else{
-      for (var t in this.state.contentTopics){
-        if(this.state.contentTopics[t] == contentTopic){
-          this.state.contentTopics.splice(t,1);
+      for (var t in tempTopics){
+        if(tempTopics[t] == contentTopic){
+          tempTopics.splice(t,1);
           break;
         }
       }
     }
-    console.log(this.state);
+    this.setState({showContent: showContent, contentTopics: tempTopics});
   }
 
   render () {
     return (
-      <TopFold onContentChanged={this.showContentChange} />
+      <div>
+        <TopFold onContentChanged={this.showContentChange} />
+        <Content showContent={this.state.showContent} contentTopics={this.state.contentTopics} />
+     </div>
     );
   }
 }

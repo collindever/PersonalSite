@@ -11,7 +11,7 @@ export default class ProjectNav extends Component {
   componentDidUpdate() {
     if(this.props.on && this.state.projects.length == 0){
       fetch('./project/names?type=' + this.state.Name)
-        .then(response =>response.json())
+        .then(response => response.json())
         .then(data => this.setState({projects: data}));
 
     }

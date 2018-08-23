@@ -67,7 +67,7 @@ html, body{
 }
 
 #Adventure-nav {
-  margin-top: 15px;
+  margin-top: 18px;
 }
 
 .project-list {
@@ -111,7 +111,8 @@ h1, h2, h3 {
 }
 
 h2 {
-  margin: 6px;
+  margin-bottom: 6px;
+  margin-top: 9px;
 }
 
 h3 {

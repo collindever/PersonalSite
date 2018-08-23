@@ -22,5 +22,20 @@ def create_app(config_filename):
             projects = listdir("./app/static/content/" + subDir)
             return dumps(projects)
 
+    @app.route('/project/snippets')
+    def getProjectSnippets():
+        subDir = request.args.get('type')
+        if subDir is not None:
+            projects = listdir("./app/static/content/" + subDir)
+            snippets = {}
+            snippets["name"] = subDir
+            snippets["projects"] = {}
+            for project in projects:
+                with open('./app/static/content/' + subDir + "/" + project + "/Intro.md") as f:
+                    snippets["projects"][project] = f.read()
+            return dumps(snippets)
+
     return app
+
+
 
