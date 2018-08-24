@@ -6,6 +6,7 @@ export default class Content extends Component {
     super(props);
     this.state = {content: {}};
     this.addContent = this.addContent.bind(this);
+    this.prepareContent = this.prepareContent.bind(this);
     this.fetchIntros = this.fetchIntros.bind(this);
     this.removeIntros = this.removeIntros.bind(this);
   }
@@ -22,6 +23,7 @@ export default class Content extends Component {
       }
     } else if(Object.keys(this.state.content).length > 0) {
       this.setState({content: {}});
+      console.log(this.state);
     }
   }
 
@@ -54,9 +56,32 @@ export default class Content extends Component {
     console.log(this.state.content);
   }
 
+  prepareContent(){
+    var markdownContent = [];
+    for (const [key,value] of Object.entries(this.state.content)) {
+      for (const [key,value] of Object.entries(value)) {
+        markdownContent.push(value);
+      }
+    }
+    return markdownContent
+  }
+
   render () {
-    return (
-      <div />
-    );
+    var contentKeys = Object.keys(this.state.content);
+    if(contentKeys.length == 0){
+      return (
+        <div id="content"/>
+      );
+    }else{
+      var content = this.prepareContent();
+      return (
+        <div id="content">
+          {content.map(function(project){
+          return <Markdown source={project} />;
+          })}
+
+        </div>
+      )
+    }
   }
 }
