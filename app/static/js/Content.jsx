@@ -20,6 +20,11 @@ export default class Content extends Component {
         }else if (topicLength < Object.keys(this.state.content).length) {
           this.removeIntros();
         }
+        var firstElement = document.getElementById("content").children[0];
+        if (firstElement != undefined){
+          firstElement.scrollIntoView({ block: 'end',  behavior: 'smooth' });
+        }
+
       }
     } else if(Object.keys(this.state.content).length > 0) {
       this.setState({content: {}});
@@ -70,14 +75,14 @@ export default class Content extends Component {
     var contentKeys = Object.keys(this.state.content);
     if(contentKeys.length == 0){
       return (
-        <div id="content"/>
+        <div id="content" className="hide"/>
       );
     }else{
       var content = this.prepareContent();
       return (
         <div id="content">
           {content.map(function(project){
-          return <Markdown source={project} />;
+          return <Markdown className="content-list-item" source={project} />;
           })}
 
         </div>

@@ -29,7 +29,7 @@ export default class Index extends Component {
 
   render () {
     return (
-      <div>
+      <div id="stuff">
         <TopFold onContentChanged={this.showContentChange} />
         <Content showContent={this.state.showContent} contentTopics={this.state.contentTopics} />
      </div>
