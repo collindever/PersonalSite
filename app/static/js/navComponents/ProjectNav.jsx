@@ -45,7 +45,7 @@ export default class ProjectNav extends Component {
 
   render() {
     return (
-      <div id={this.state.Name + '-nav'} className="nav-element">
+      <div id={this.state.Name + '-nav'} className="clickable-nav-element">
         <h2 onClick={this.onClick}>{this.state.Name}</h2>
         {this.ShowProjects()}
       </div>

@@ -73,6 +73,22 @@ The receiver circuit is powered by +12V and -12V rails.  A photo-diode receives 
 
   Multiple topologies were examined in the process of designing the receiver. Ultimately, a multi-feedback bandpass filter was selected. This was the hardest section of the design project.  We ran into many cases where our simulations did not line up with our observed results. A working band pass filter was finally relized across all three stage when each opamp was hand tuned by selecting resistor values close to that of the calculated value but through observation achieved the center frequency of 20kHz.  Once this was done we were able to get a gain equivalent to what we were expecting from our simulations.
 
+      ACTIVE FILTER DESIGN FOR RECEIVER CIRCUIT
+
+      .include LF347_SpiceModel.cir
+
+      V1 1 0 DC 0 AC 1
+      R1 1 2 68k
+      R2 3 4 1.47Meg
+      R3 2 0 560
+      C1 2 4 220p
+      C2 2 3 220p
+
+      Eoa 4 0 3 0 100000
+
+      .AC DEC 100 10k 1Meg
+      .END
+
 * Transistor Based Amplifier
 
   The transistor based amplifier was used as the final output stage of our receiver circuit.  An N-type MOSFET was selected to remove any current coming from our source.
@@ -86,4 +102,7 @@ The receiver circuit is powered by +12V and -12V rails.  A photo-diode receives 
 #### Summary
 
 #### References
+
+[Resistor Color Code Calculator](https://www.allaboutcircuits.com/tools/resistor-color-code-calculator/) pretty much open every lab
+
 
