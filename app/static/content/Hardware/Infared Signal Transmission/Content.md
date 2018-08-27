@@ -12,7 +12,7 @@
 * Receiver
   - +/- 12V
   - Three multiple feedback bandpass filters
-  - one diode based amplifying circuit
+  - one transistor based amplifier
   - detected reliable singal at 4-5 meters
 
 #### Transmitter
@@ -53,10 +53,37 @@
 
   The opamp used was a MCP6001 which uses 5V and 0V rails and the output was used to drive a IR1503 infrared LED.  Since the current limit of the opamp is only 20mA a 2N3904 NPN was used to increase the current to our desired maximum of 50mA. This amplifier was also designed to take the output of the oscillator which was sinisodial and create a square wave with an aproximately 50% duty cycle. The LED itself is current driven so resistors were placed in series with ground to generate the approiate current across the LED.
 
-  ![transmitters amplifying circuit schematic](transmitter-amplifier-circuit.jpg)
+  ![Transmitters amplifying circuit schematic](transmitter-amplifier-circuit.jpg)
 
   In order to get as close to the 50mA mark as possible we used 3 resistors in parralell. Two 100 ohm resistors and 1 470 ohm resistor. This gave us an equivalent resistance of 45.9 ohm which was enough to give us 49.9mA of current.  The photo above displays the second stage used to achieve the correct current.  A first stage was used and a seperate op-amp circuit constructed to create a square wave with a 50% duty cycle which is noticable in the final output below.
 
-  ![final-transmitter output](transmitter-output.jpg)
+  ![Final transmitter output](transmitter-output.jpg)
 
 #### Receiver
+
+![Schematic of receiver circuit](complete-receiver-circut.png)
+
+The receiver circuit is powered by +12V and -12V rails.  A photo-diode receives a signal from our transmitter and emits a current proportional to the amount of infra-red light striking the diode.  This is fed into a trans-impedance amplifier which converts the current into an amplified voltage.  Because infra-red comes from many environmental sources a bandpass filters is used to remove as much noise as possible and isolate our transmitter's signal. Three cascading identical multi-feedback band pass filter accomplish filtering out the noise as well as amplifying the signal. A transistor based amplifier is also included which serves as a final gain stage.  The overall gain of the circuit is approximately 80dB which helps achieve further distances while still maintaining signal integrity.
+
+* Multi-Feedback Topology Band Pass Filter
+
+  a Multi-Feedback Bandpass Filter was designed with a bandwidth of 1800Hz and a gain of 10dB. The circuit was designed with a mid-frequency 20kHz. To simplify the circuit design $C_{1}=C_{2}$.
+
+  ![Schematic for the lf347 band pass](lf347-single-stage.png)
+
+  Multiple topologies were examined in the process of designing the receiver. Ultimately, a multi-feedback bandpass filter was selected. This was the hardest section of the design project.  We ran into many cases where our simulations did not line up with our observed results. A working band pass filter was finally relized across all three stage when each opamp was hand tuned by selecting resistor values close to that of the calculated value but through observation achieved the center frequency of 20kHz.  Once this was done we were able to get a gain equivalent to what we were expecting from our simulations.
+
+* Transistor Based Amplifier
+
+  The transistor based amplifier was used as the final output stage of our receiver circuit.  An N-type MOSFET was selected to remove any current coming from our source.
+
+  ![Schematic for Transistor based Amp](nmos-amplifer.png)
+
+  A capacitor was placed between our signal and the gate in order to eliminate any DC components our our signal.  A DC bias is obtained with a voltage divider between the circuits 12V and supplies -9.3V our gain from this circuit is about 13. The C1 value was selected to provide a high pass filter with a cutoff frequency of about 1000Hz.
+
+![Photo of finished Receiver Circuit](receiver-img.jpg)
+
+#### Summary
+
+#### References
+
