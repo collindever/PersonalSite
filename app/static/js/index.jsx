@@ -13,7 +13,6 @@ export default class Index extends Component {
 
   showContentChange(add, showContent, contentTopic){
     var tempTopics = this.state.contentTopics;
-    console.log("Index contentTopics: " + this.state.contentTopics);
     if(add){
       tempTopics.push(contentTopic);
     }else{

@@ -1,5 +1,34 @@
 import React, {Component} from 'react';
+import MathJax from 'react-mathjax';
 const Markdown = require('react-markdown');
+const RemarkMathPlugin = require('remark-math');
+
+const math = props => <MathJax.Node>{props.value}</MathJax.Node>
+const inlineMath = props => <MathJax.Node inline>{props.value}</MathJax.Node>
+
+// console.log(Markdown.defaultProps);
+// export const MarkdownRender = (props: Markdown.ReactMarkdownProps) => {
+//   const newProps = {
+//     ...props,
+//     plugins: [
+//       RemarkMathPlugin,
+//     ],
+//     renderers: {
+//       ...props.renderers,
+//       math: (props: {value: string}) =>
+//         <MathJax.Node>{props.value}</MathJax.Node>,
+//       inlineMath: (props: {value: string}) =>
+//         <MathJax.Node inline>{props.value}</MathJax.Node>,
+//     }
+//   };
+//   return (
+//     <MathJax.Context input="tex">
+//       <ReactMarkdown {...newProps} />
+//     </MathJax.Context>
+//   );
+// };
+
+console.log(MathJax);
 
 export default class Content extends Component {
   constructor(props){
@@ -28,7 +57,6 @@ export default class Content extends Component {
       }
     } else if(Object.keys(this.state.content).length > 0) {
       this.setState({content: {}});
-      console.log(this.state);
     }
   }
 
@@ -49,7 +77,6 @@ export default class Content extends Component {
       if(this.props.contentTopics.indexOf(contentKeys[i]) === -1){
         delete tempContent[contentKeys[i]];
         this.setState({content: tempContent});
-        console.log(this.state.content);
       }
     }
   }
@@ -58,7 +85,6 @@ export default class Content extends Component {
     var tempContent = this.state.content;
     tempContent[data.name] = data.projects;
     this.setState({content: tempContent});
-    console.log(this.state.content);
   }
 
   prepareContent(){
@@ -81,10 +107,9 @@ export default class Content extends Component {
       var content = this.prepareContent();
       return (
         <div id="content">
-          {content.map(function(project){
-          return <Markdown className="content-list-item" source={project} />;
-          })}
-
+            {content.map(function(project){
+              return <Markdown className="content-list-item" source={project} plugins={[RemarkMathPlugin]} renderers={{inlineMath, math}} />;
+            })}
         </div>
       )
     }
