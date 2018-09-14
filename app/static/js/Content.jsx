@@ -3,32 +3,8 @@ import MathJax from 'react-mathjax';
 const Markdown = require('react-markdown');
 const RemarkMathPlugin = require('remark-math');
 
-const math = props => <MathJax.Node>{props.value}</MathJax.Node>
-const inlineMath = props => <MathJax.Node inline>{props.value}</MathJax.Node>
-
-// console.log(Markdown.defaultProps);
-// export const MarkdownRender = (props: Markdown.ReactMarkdownProps) => {
-//   const newProps = {
-//     ...props,
-//     plugins: [
-//       RemarkMathPlugin,
-//     ],
-//     renderers: {
-//       ...props.renderers,
-//       math: (props: {value: string}) =>
-//         <MathJax.Node>{props.value}</MathJax.Node>,
-//       inlineMath: (props: {value: string}) =>
-//         <MathJax.Node inline>{props.value}</MathJax.Node>,
-//     }
-//   };
-//   return (
-//     <MathJax.Context input="tex">
-//       <ReactMarkdown {...newProps} />
-//     </MathJax.Context>
-//   );
-// };
-
-console.log(MathJax);
+const math = props => <MathJax.Provider><MathJax.Node formula={props.value}></MathJax.Node></MathJax.Provider>
+const inlineMath = props => <MathJax.Provider><MathJax.Node inline formula={props.value}></MathJax.Node></MathJax.Provider>
 
 export default class Content extends Component {
   constructor(props){
