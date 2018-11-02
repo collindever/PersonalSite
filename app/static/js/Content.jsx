@@ -14,6 +14,7 @@ export default class Content extends Component {
     this.prepareContent = this.prepareContent.bind(this);
     this.fetchIntros = this.fetchIntros.bind(this);
     this.removeIntros = this.removeIntros.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
   componentDidUpdate() {
@@ -25,7 +26,7 @@ export default class Content extends Component {
         }else if (topicLength < Object.keys(this.state.content).length) {
           this.removeIntros();
         }
-        var firstElement = document.getElementById("content").children[0];
+        var firstElement = document.getElementById("content-list").children[0];
         if (firstElement != undefined){
           firstElement.scrollIntoView({ block: 'end',  behavior: 'smooth' });
         }
@@ -57,13 +58,13 @@ export default class Content extends Component {
     }
   }
 
-  addContent(data){
+  addContent(data) {
     var tempContent = this.state.content;
     tempContent[data.name] = data.projects;
     this.setState({content: tempContent});
   }
 
-  prepareContent(){
+  prepareContent() {
     var markdownContent = [];
     for (const [key,value] of Object.entries(this.state.content)) {
       for (const [key,value] of Object.entries(value)) {
@@ -73,19 +74,26 @@ export default class Content extends Component {
     return markdownContent
   }
 
-  render () {
+  onClick(e) {
+    var article = e.target.firstChild.data;
+    console.log(article);
+  }
+
+  render() {
     var contentKeys = Object.keys(this.state.content);
     if(contentKeys.length == 0){
       return (
-        <div id="content" className="hide"/>
+        <div id="content-list" className="hide"/>
       );
     }else{
       var content = this.prepareContent();
       return (
-        <div id="content">
+        <div id="content-list">
+          <div id="content-list-item-clickable" onClick={this.onClick}>
             {content.map(function(project){
               return <Markdown className="content-list-item" source={project} plugins={[RemarkMathPlugin]} renderers={{inlineMath, math}} />;
             })}
+          </div>
         </div>
       )
     }
