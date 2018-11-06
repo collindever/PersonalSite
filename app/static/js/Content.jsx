@@ -9,7 +9,7 @@ const inlineMath = props => <MathJax.Provider><MathJax.Node inline formula={prop
 export default class Content extends Component {
   constructor(props){
     super(props);
-    this.state = {content: {}};
+    this.state = {contentList: {}, article: null};
     this.addContent = this.addContent.bind(this);
     this.prepareContent = this.prepareContent.bind(this);
     this.fetchIntros = this.fetchIntros.bind(this);
@@ -21,9 +21,9 @@ export default class Content extends Component {
     if (this.props.showContent) {
       var topicLength = this.props.contentTopics.length;
       if (topicLength > 0){
-        if(topicLength > Object.keys(this.state.content).length) {
+        if(topicLength > Object.keys(this.state.contentList).length) {
           this.fetchIntros(topicLength);
-        }else if (topicLength < Object.keys(this.state.content).length) {
+        }else if (topicLength < Object.keys(this.state.contentList).length) {
           this.removeIntros();
         }
         var firstElement = document.getElementById("content-list").children[0];
@@ -32,14 +32,14 @@ export default class Content extends Component {
         }
 
       }
-    } else if(Object.keys(this.state.content).length > 0) {
-      this.setState({content: {}});
+    } else if(Object.keys(this.state.contentList).length > 0) {
+      this.setState({contentList: {}});
     }
   }
 
   fetchIntros(topicLength) {
     for (var i = 0; i < topicLength; i++){
-      if (!this.state.content.hasOwnProperty(this.props.contentTopics[i])){
+      if (!this.state.contentList.hasOwnProperty(this.props.contentTopics[i])){
         fetch('./project/snippets?type=' + this.props.contentTopics[i])
           .then(response => response.json())
           .then(data => this.addContent(data))
@@ -48,25 +48,25 @@ export default class Content extends Component {
   }
 
   removeIntros() {
-    var contentKeys = Object.keys(this.state.content);
-    var tempContent = this.state.content;
+    var contentKeys = Object.keys(this.state.contentList);
+    var tempContent = this.state.contentList;
     for (var i = 0; i < contentKeys.length; i++){
       if(this.props.contentTopics.indexOf(contentKeys[i]) === -1){
         delete tempContent[contentKeys[i]];
-        this.setState({content: tempContent});
+        this.setState({contentList: tempContent});
       }
     }
   }
 
   addContent(data) {
-    var tempContent = this.state.content;
+    var tempContent = this.state.contentList;
     tempContent[data.name] = data.projects;
-    this.setState({content: tempContent});
+    this.setState({contentList: tempContent});
   }
 
   prepareContent() {
     var markdownContent = [];
-    for (const [key,value] of Object.entries(this.state.content)) {
+    for (const [key,value] of Object.entries(this.state.contentList)) {
       for (const [key,value] of Object.entries(value)) {
         markdownContent.push(value);
       }
@@ -76,26 +76,50 @@ export default class Content extends Component {
 
   onClick(e) {
     var article = e.target.firstChild.data;
-    console.log(article);
+    var tmpArticle = "## " + article;
+    this.setState({article: tmpArticle});
   }
 
   render() {
-    var contentKeys = Object.keys(this.state.content);
+    var contentKeys = Object.keys(this.state.contentList);
     if(contentKeys.length == 0){
       return (
-        <div id="content-list" className="hide"/>
+        <div id="content">
+          <div id="content-list" className="hide"/>
+        </div>
       );
     }else{
       var content = this.prepareContent();
-      return (
-        <div id="content-list">
-          <div id="content-list-item-clickable" onClick={this.onClick}>
-            {content.map(function(project){
-              return <Markdown className="content-list-item" source={project} plugins={[RemarkMathPlugin]} renderers={{inlineMath, math}} />;
-            })}
+      if(this.state.article == null){
+        return (
+          <div id="content">
+            <div id="content-list">
+              <div id="content-list-item-clickable" onClick={this.onClick}>
+                {content.map(function(project){
+                  return <Markdown className="content-list-item" source={project} plugins={[RemarkMathPlugin]} renderers={{inlineMath, math}} />;
+                })}
+              </div>
+            </div>
+            <div id="article" />
           </div>
-        </div>
-      )
+        )
+      }else{
+        return (
+          <div id="content">
+            <div id="content-list" className="swipe">
+              <div id="content-list-item-clickable" onClick={this.onClick}>
+                {content.map(function(project){
+                  return <Markdown className="content-list-item" source={project} plugins={[RemarkMathPlugin]} renderers={{inlineMath, math}} />
+                })}
+              </div>
+            </div>
+            <div id="article"  className="swipe">
+              <img id="back-button" src="/static/images/back.png" />
+              <Markdown className="article-content" source={this.state.article} plugins={[RemarkMathPlugin]} renderers={{inlineMath, math}} />
+            </div>
+          </div>
+        )
+      }
     }
   }
 }

@@ -70,23 +70,34 @@
 }
 
 #content-list {
-  margin-top: 20%;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin-right: 2.5%;
   opacity: 1;
+  position: relative;
+  left: 0px;
   transition: opacity 125ms 125ms;
+  width: 40%;
+  display: inline-block;
 }
 
 #content-list.hide {
-  margin-top: 0%;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin-right: 2.5%;
   opacity: 0;
   transition: opacity 125ms 125ms;
 }
 
-#stuff {
+#content-list.swipe {
+  transition: left 1s 100ms ease-out;
+  left: -1500px;
+}
 
+#stuff {
+  overflow: hidden;
+}
+
+#content {
+  width: 220%;
+  margin-top: 20%;
+  margin-left: 5%;
 }
 
 .project-list {
@@ -139,6 +150,34 @@
 
 .project-list-item {
   cursor: pointer;
+}
+
+#back-button {
+  margin-left: 5%;
+  width: 5%;
+  float: inline-start;
+}
+
+#article{
+  width: 30%;
+  display: inline-block;
+  left: 0px;
+  position: relative;
+  vertical-align: top;
+  opacity: 0;
+}
+
+#article.swipe {
+  transition: left 1s 200ms ease-out, opacity 500ms;
+  left: -1150px;
+  opacity: 1;
+}
+
+.article-content {
+  width: 30%;
+  display: inline-flex;
+  margin-left: 3%;
+  padding-top: 3%;
 }
 
 html {
