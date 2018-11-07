@@ -11,10 +11,12 @@ export default class Content extends Component {
     super(props);
     this.state = {contentList: {}, article: null};
     this.addContent = this.addContent.bind(this);
-    this.prepareContent = this.prepareContent.bind(this);
+    // this.prepareContent = this.prepareContent.bind(this);
+    this.fetchArticle = this.fetchArticle.bind(this);
     this.fetchIntros = this.fetchIntros.bind(this);
     this.removeIntros = this.removeIntros.bind(this);
-    this.onClick = this.onClick.bind(this);
+    this.onArticleClick = this.onArticleClick.bind(this);
+    this.onArticleClose = this.onArticleClose.bind(this);
   }
 
   componentDidUpdate() {
@@ -47,6 +49,10 @@ export default class Content extends Component {
     }
   }
 
+  fetchArticle() {
+
+  }
+
   removeIntros() {
     var contentKeys = Object.keys(this.state.contentList);
     var tempContent = this.state.contentList;
@@ -64,24 +70,30 @@ export default class Content extends Component {
     this.setState({contentList: tempContent});
   }
 
-  prepareContent() {
-    var markdownContent = [];
-    for (const [key,value] of Object.entries(this.state.contentList)) {
-      for (const [key,value] of Object.entries(value)) {
-        markdownContent.push(value);
-      }
-    }
-    return markdownContent
-  }
+  // prepareContent() {
+  //   var markdownContent = [];
+  //   for (const [key,value] of Object.entries(this.state.contentList)) {
+  //
+  //     for (const [key,value] of Object.entries(value)) {
+  //       markdownContent.push(value);
+  //     }
+  //   }
+  //   return markdownContent
+  // }
 
-  onClick(e) {
+  onArticleClick(e) {
     var article = e.target.firstChild.data;
     var tmpArticle = "## " + article;
     this.setState({article: tmpArticle});
   }
 
+  onArticleClose() {
+      this.setState({article: null});
+  }
+
   render() {
     var contentKeys = Object.keys(this.state.contentList);
+    var self = this;
     if(contentKeys.length == 0){
       return (
         <div id="content">
@@ -89,14 +101,15 @@ export default class Content extends Component {
         </div>
       );
     }else{
-      var content = this.prepareContent();
       if(this.state.article == null){
         return (
           <div id="content">
             <div id="content-list">
-              <div id="content-list-item-clickable" onClick={this.onClick}>
-                {content.map(function(project){
-                  return <Markdown className="content-list-item" source={project} plugins={[RemarkMathPlugin]} renderers={{inlineMath, math}} />;
+              <div id="content-list-item-clickable" onClick={this.onArticleClick}>
+                { contentKeys.map(function(projectCategory){
+                  return Object.keys(self.state.contentList[projectCategory]).map(function(project){
+                    return <Markdown className={"content-list-item " + projectCategory} source={self.state.contentList[projectCategory][project]} plugins={[RemarkMathPlugin]} renderers={{inlineMath, math}} />;
+                  })
                 })}
               </div>
             </div>
@@ -104,17 +117,20 @@ export default class Content extends Component {
           </div>
         )
       }else{
+        // var article = this.getArticle();
         return (
           <div id="content">
             <div id="content-list" className="swipe">
-              <div id="content-list-item-clickable" onClick={this.onClick}>
-                {content.map(function(project){
-                  return <Markdown className="content-list-item" source={project} plugins={[RemarkMathPlugin]} renderers={{inlineMath, math}} />
+              <div id="content-list-item-clickable" onClick={this.onArticleClick}>
+                { contentKeys.map(function(projectCategory){
+                  return Object.keys(self.state.contentList[projectCategory]).map(function(project){
+                    return <Markdown className={"content-list-item " + projectCategory} source={self.state.contentList[projectCategory][project]} plugins={[RemarkMathPlugin]} renderers={{inlineMath, math}} />;
+                  })
                 })}
               </div>
             </div>
             <div id="article"  className="swipe">
-              <img id="back-button" src="/static/images/back.png" />
+              <img id="close" src="/static/images/close.png" onClick={this.onArticleClose}/>
               <Markdown className="article-content" source={this.state.article} plugins={[RemarkMathPlugin]} renderers={{inlineMath, math}} />
             </div>
           </div>

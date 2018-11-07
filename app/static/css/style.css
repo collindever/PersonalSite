@@ -74,15 +74,14 @@
   opacity: 1;
   position: relative;
   left: 0px;
-  transition: opacity 125ms 125ms;
+  transition: left 1s 200ms ease-out, opacity 125ms 125ms;
   width: 40%;
   display: inline-block;
 }
 
 #content-list.hide {
-  margin-right: 2.5%;
   opacity: 0;
-  transition: opacity 125ms 125ms;
+  transition: opacity 125ms 125ms, max-height 250ms ease-in;
 }
 
 #content-list.swipe {
@@ -152,19 +151,20 @@
   cursor: pointer;
 }
 
-#back-button {
+#close {
   margin-left: 5%;
-  width: 5%;
+  width: 3%;
   float: inline-start;
 }
 
 #article{
-  width: 30%;
+  width: 50%;
   display: inline-block;
   left: 0px;
   position: relative;
   vertical-align: top;
   opacity: 0;
+  transition: left 1s 200ms ease-out, opacity 500ms;
 }
 
 #article.swipe {
@@ -174,7 +174,7 @@
 }
 
 .article-content {
-  width: 30%;
+  width: 60%;
   display: inline-flex;
   margin-left: 3%;
   padding-top: 3%;
