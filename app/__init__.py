@@ -18,9 +18,11 @@ def create_app(config_filename):
     @app.route('/project/names')
     def getProjectNames():
         subDir = request.args.get('type')
+        projects = []
         if subDir is not None:
-            projects = listdir("./app/static/content/" + subDir)
-            return dumps(projects)
+            for project in listdir("./app/static/content/" + subDir):
+                projects.append(project.replace("_", " "))
+        return dumps(projects)
 
     @app.route('/project/snippets')
     def getProjectSnippets():
@@ -31,10 +33,18 @@ def create_app(config_filename):
             snippets["name"] = subDir
             snippets["projects"] = {}
             for project in projects:
+                print(project)
                 with open('./app/static/content/' + subDir + "/" + project + "/Intro.md") as f:
                     snippets["projects"][project] = f.read()
             return dumps(snippets)
-
+    @app.route('/project/content')
+    def getProjectContent():
+        subDir = request.args.get('topic')
+        project = request.args.get('project')
+        article = {}
+        with open('./app/static/content/' + subDir + "/" + project + "/Content.md") as f:
+            article[project] = f.read()
+        return dumps(article)
     return app
 
 

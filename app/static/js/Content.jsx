@@ -11,7 +11,7 @@ export default class Content extends Component {
     super(props);
     this.state = {contentList: {}, article: null};
     this.addContent = this.addContent.bind(this);
-    // this.prepareContent = this.prepareContent.bind(this);
+    this.addArticle = this.addArticle.bind(this);
     this.fetchArticle = this.fetchArticle.bind(this);
     this.fetchIntros = this.fetchIntros.bind(this);
     this.removeIntros = this.removeIntros.bind(this);
@@ -49,8 +49,11 @@ export default class Content extends Component {
     }
   }
 
-  fetchArticle() {
-
+  fetchArticle(articleName, topic) {
+    articleName = articleName.split(" ").join("_");
+    fetch('./project/content?topic=' + topic + "&project=" + articleName)
+      .then(response => response.json())
+      .then(data => this.addArticle(data, articleName))
   }
 
   removeIntros() {
@@ -70,21 +73,15 @@ export default class Content extends Component {
     this.setState({contentList: tempContent});
   }
 
-  // prepareContent() {
-  //   var markdownContent = [];
-  //   for (const [key,value] of Object.entries(this.state.contentList)) {
-  //
-  //     for (const [key,value] of Object.entries(value)) {
-  //       markdownContent.push(value);
-  //     }
-  //   }
-  //   return markdownContent
-  // }
+  addArticle(data, article) {
+    var tempContent = data[article];
+    this.setState({article: tempContent});
+  }
 
   onArticleClick(e) {
     var article = e.target.firstChild.data;
-    var tmpArticle = "## " + article;
-    this.setState({article: tmpArticle});
+    var topic = e.currentTarget.firstChild.className.split(" ")[1];
+    this.fetchArticle(article, topic);
   }
 
   onArticleClose() {
@@ -117,7 +114,6 @@ export default class Content extends Component {
           </div>
         )
       }else{
-        // var article = this.getArticle();
         return (
           <div id="content">
             <div id="content-list" className="swipe">
@@ -131,7 +127,7 @@ export default class Content extends Component {
             </div>
             <div id="article"  className="swipe">
               <img id="close" src="/static/images/close.png" onClick={this.onArticleClose}/>
-              <Markdown className="article-content" source={this.state.article} plugins={[RemarkMathPlugin]} renderers={{inlineMath, math}} />
+                <Markdown className="article-content" source={this.state.article} plugins={[RemarkMathPlugin]} renderers={{inlineMath, math}} />
             </div>
           </div>
         )
