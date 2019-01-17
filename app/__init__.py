@@ -37,6 +37,7 @@ def create_app(config_filename):
                 with open('./app/static/content/' + subDir + "/" + project + "/Intro.md") as f:
                     snippets["projects"][project] = f.read()
             return dumps(snippets)
+
     @app.route('/project/content')
     def getProjectContent():
         subDir = request.args.get('topic')
@@ -45,6 +46,7 @@ def create_app(config_filename):
         with open('./app/static/content/' + subDir + "/" + project + "/Content.md") as f:
             article[project] = f.read()
         return dumps(article)
+    
     return app
 
 

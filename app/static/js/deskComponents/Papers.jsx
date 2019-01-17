@@ -15,7 +15,7 @@ export default class Papers extends Component {
     papers.globalCompositeOperation='source-over';
 
     //make the bottom paper
-    papers.fillStyle = '#FFEEDD';
+    papers.fillStyle = '#edf5e1';
     papers.beginPath();
     papers.moveTo(40,40);
     papers.lineTo(150,40);
@@ -26,7 +26,7 @@ export default class Papers extends Component {
     papers.rotate(5*Math.PI/180);
 
     //make the middle paper
-    papers.fillStyle = '#FFEEDD';
+    papers.fillStyle = '#edf5e1';
     papers.beginPath();
     papers.moveTo(58,38);
     papers.lineTo(163,38);
@@ -40,7 +40,7 @@ export default class Papers extends Component {
 
     papers.rotate(5*Math.PI/180);
     //make the top paper
-    papers.fillStyle = '#FFEEDD';
+    papers.fillStyle = '#edf5e1';
     papers.beginPath();
     papers.moveTo(75,40);
     papers.lineTo(180,40);

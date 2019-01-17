@@ -93,7 +93,7 @@
 
 #content {
   width: 220%;
-  margin-top: 20%;
+  margin-top: 32%;
   margin-left: 5%;
 }
 
@@ -207,13 +207,13 @@ html {
 
 html, body{
   height: 98%;
-  background-color: #61a570;
+  background-color: #00af66;
 }
 
 h1, h2, h3, h4, p {
   font-family: 'Lato', sans-serif;
   display: table;
-  color: #fffbda;
+  color: #edf5e1;
 }
 
 a {
@@ -222,7 +222,7 @@ a {
 
 ul, li {
   font-family: 'Lato', sans-serif;
-  color: #fffbda;
+  color: #edf5e1;
 }
 
 h2 {
