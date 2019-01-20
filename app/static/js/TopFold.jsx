@@ -30,6 +30,7 @@ export default class TopFold extends Component {
     return (
       <div id='top-fold'>
         <Navigation softwareOn={this.state.softwareOn} hardwareOn={this.state.hardwareOn} onHardwareClickChange={this.handleHardwareClick} onSoftwareClickChange={this.handleSoftwareClick}/>
+        <div id='top-fold-buffer'></div>
         <Desk hardwareOn={this.state.hardwareOn} onHardwareClickChange={this.handleHardwareClick}/>
       </div>
     );

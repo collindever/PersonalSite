@@ -10,13 +10,15 @@ import SolderIronOverlay from './deskComponents/SolderIronOverlay';
 export default class Desk extends Component {
   render () {
     return (
-      <div id="desk">
-        <Laptop />
-        <CoffeeCup />
+      <div id='desk'>
         <Papers />
         <PictureFrame />
-        <SolderIron />
-        <SolderIronOverlay on={this.props.hardwareOn} onClickChange={this.props.onHardwareClickChange} />
+        <Laptop />
+        <div id='solder-iron-container' >
+          <SolderIron />
+          <SolderIronOverlay on={this.props.hardwareOn} onClickChange={this.props.onHardwareClickChange} />
+        </div>
+        <CoffeeCup />
       </div>
     );
   }
