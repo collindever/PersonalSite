@@ -33,6 +33,5 @@
     "plugins": [
       "transform-object-rest-spread"
     ]
-  },
-  "optionalDependencies": {}
+  }
 }

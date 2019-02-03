@@ -1,10 +1,10 @@
 const webpack = require('webpack');
 
 const config = {
-    entry:  __dirname + '/js/index.jsx',
+    entry:  __dirname + '/app/index.jsx',
     output: {
-        path: __dirname + '/build',
-        filename: 'bundle.js',
+        path: __dirname + '../../Flask-App/app/static/js',
+        filename: 'app.js',
     },
     resolve: {
         extensions: ['.js', '.jsx', '.css']
