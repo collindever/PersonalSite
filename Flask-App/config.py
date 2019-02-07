@@ -1,6 +1,3 @@
-# Statement for enabling the development environment
-DEBUG = True
-
 # Define the application directory
 from os import path
 BASE_DIR = path.abspath(path.dirname(__file__))
