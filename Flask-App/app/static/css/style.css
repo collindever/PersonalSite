@@ -2,6 +2,8 @@
   min-width:95%;
   min-height: 95%;
   left: 2.5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 4fr;
 }
 
 #nav {
@@ -19,48 +21,50 @@
 }
 
 #coffeeCup {
-  position: absolute;
-  padding: 1%;
-  right: 15%;
-  bottom: 30%;
   cursor: pointer;
+  padding: 1%;
+  height: 17%;
+  margin-top: 45%;
 }
 
 #laptop {
-  position: absolute;
-  top:10%;
-  right: 25%;
   padding: 1%;
+  margin-top: 20%;
+  margin-left: 2%;
+  height: 55%;
 }
 
 #papers {
-  position: absolute;
-  left: 15%;
-  bottom: 20%;
   padding: 1%;
+  height: 40%;
+  margin-top: 35%;
 }
 
 #pictureFrame {
-  position: absolute;
-  left: 25%;
-  top: 10%;
   padding: 1%;
+  height: 15%;
+  margin-top: 15%;
+  margin-left: -9%;
+}
+
+#solder-iron-container {
+  padding: 1%;
+  margin-top: 12%;
+  position: relative;
 }
 
 #solderIron {
   position: absolute;
-  left: 75%;
-  top: 10%;
-  padding: 1%;
+  top: 0;
+  left: 0;
 }
 
 #solderIronOverlay {
   position: absolute;
-  left: 75%;
-  top: 10%;
-  padding: 1%;
-  z-index: 1;
+  top: 0;
+  left: 0;
   cursor: pointer;
+  z-index: 1;
 }
 
 #Adventure-nav {
@@ -93,7 +97,7 @@
 
 #content {
   width: 220%;
-  margin-top: 20%;
+  margin-top: 5%;
   margin-left: 5%;
 }
 
@@ -207,13 +211,13 @@ html {
 
 html, body{
   height: 98%;
-  background-color: #61a570;
+  background-color: #00af66;
 }
 
 h1, h2, h3, h4, p {
   font-family: 'Lato', sans-serif;
   display: table;
-  color: #fffbda;
+  color: #edf5e1;
 }
 
 a {
@@ -222,7 +226,7 @@ a {
 
 ul, li {
   font-family: 'Lato', sans-serif;
-  color: #fffbda;
+  color: #edf5e1;
 }
 
 h2 {

@@ -1,3 +1,4 @@
 *.pyc
-app/static/node_modules/
-app/static/build/
+React-App/node_modules/
+Flask-App/app/static/js/
+package-lock.json
