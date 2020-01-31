@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import { render } from 'react-dom';
 import TopFold from './TopFold';
-import Navigation from './Navigation';
-import Content from './Content'
+import Content from './Content';
 
 export default class Index extends Component {
   constructor(props){
     super(props);
-    this.state = {showContent : false, contentTopics: []};
+    this.state = {showAbout: false, showContent: false, contentTopics: []};
     this.showContentChange = this.showContentChange.bind(this);
+    this.showAbout = this.showAbout.bind(this);
   }
 
   showContentChange(add, showContent, contentTopic){
@@ -26,11 +26,17 @@ export default class Index extends Component {
     this.setState({showContent: showContent, contentTopics: tempTopics});
   }
 
+  showAbout() {
+    var newAboutState = this.state.showAbout ? false : true;
+    var newState = {showAbout: newAboutState, showContent: this.state.showContent, contentTopics: this.state.contentTopics};
+    this.setState(newState);
+  }
+
   render () {
     return (
       <div id="stuff">
-        <TopFold onContentChanged={this.showContentChange} />
-        <Content showContent={this.state.showContent} contentTopics={this.state.contentTopics} />
+        <TopFold onContentChanged={this.showContentChange} onAboutClicked={this.showAbout} />
+        <Content showAbout={this.state.showAbout} showContent={this.state.showContent} contentTopics={this.state.contentTopics} />
      </div>
     );
   }

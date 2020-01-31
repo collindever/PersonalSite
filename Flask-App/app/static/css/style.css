@@ -172,6 +172,10 @@
   cursor: pointer;
 }
 
+.clickable-nav-element>h2:hover{
+  background-color: #3A884F;
+}
+
 .project-list-item {
   cursor: pointer;
 }

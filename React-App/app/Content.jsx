@@ -9,7 +9,7 @@ const inlineMath = props => <MathJax.Provider><MathJax.Node inline formula={prop
 export default class Content extends Component {
   constructor(props){
     super(props);
-    this.state = {contentList: {}, article: null};
+    this.state = {contentList: {}, article: null, showingAbout: false};
     this.addContent = this.addContent.bind(this);
     this.addArticle = this.addArticle.bind(this);
     this.fetchArticle = this.fetchArticle.bind(this);
@@ -17,9 +17,14 @@ export default class Content extends Component {
     this.removeIntros = this.removeIntros.bind(this);
     this.onArticleClick = this.onArticleClick.bind(this);
     this.onArticleClose = this.onArticleClose.bind(this);
+    this.fetchAbout = this.fetchAbout.bind(this);
   }
 
   componentDidUpdate() {
+    if(this.props.showAbout && this.state.showingAbout == false) {
+      console.info("Content Got About Click");
+      this.fetchAbout();
+    }
     if (this.props.showContent) {
       var topicLength = this.props.contentTopics.length;
       if (topicLength > 0){
@@ -49,6 +54,16 @@ export default class Content extends Component {
     }
   }
 
+  fetchAbout() {
+    console.log("fetchAbout");
+    fetch('./about')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        this.addArticle(data, 'About')
+      })
+  }
+
   fetchArticle(articleName, topic) {
     articleName = articleName.split(" ").join("_");
     fetch('./project/content?topic=' + topic + "&project=" + articleName)
@@ -74,8 +89,15 @@ export default class Content extends Component {
   }
 
   addArticle(data, article) {
-    var tempContent = data[article];
-    this.setState({article: tempContent});
+    if (article == 'About') {
+      console.log("Setting About Article");
+      const tempContent = data["about"];
+      this.setState({article: tempContent, showingAbout: true});
+    } else {
+      var tempContent = data[article];
+      this.setState({article: tempContent});
+    }
+
   }
 
   onArticleClick(e) {
@@ -91,7 +113,7 @@ export default class Content extends Component {
   render() {
     var contentKeys = Object.keys(this.state.contentList);
     var self = this;
-    if(contentKeys.length == 0){
+    if(contentKeys.length == 0 && !this.state.showingAbout){
       return (
         <div id="content">
           <div id="content-list" className="hide"/>

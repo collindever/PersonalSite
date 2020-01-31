@@ -15,6 +15,13 @@ def create_app(config_filename):
     def index():
     	return render_template('index.html')
 
+    @app.route('/about')
+    def getAbout():
+        article = {}
+        with open('./app/static/content/About.md') as f:
+            article['about'] = f.read()
+        return dumps(article)
+
     @app.route('/project/names')
     def getProjectNames():
         subDir = request.args.get('type')

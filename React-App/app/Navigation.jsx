@@ -7,8 +7,9 @@ export default class Navigation extends Component {
       <div id="nav">
         <ProjectNav name='Hardware' on={this.props.hardwareOn} onClickChange={this.props.onHardwareClickChange}/>
         <ProjectNav name='Software' on={this.props.softwareOn} onClickChange={this.props.onSoftwareClickChange}/>
-        <div id='Resume-nav' className="nav-element">
-          <h2>Resume</h2>
+        <ProjectNav name='Data Science' on={this.props.dataOn} onClickChange={this.props.onDataClickChange}/>
+        <div id='Resume-nav' className="clickable-nav-element">
+          <h2 onClick={this.props.onAboutMeClick}>About Me</h2>
         </div>
         <div id='Adventure-nav' className="nav-element">
           <h2>Adventures</h2>
