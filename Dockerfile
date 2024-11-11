@@ -1,4 +1,4 @@
-FROM node:current-alpine as node-builder
+FROM node:14.4.0-alpine AS node-builder
 
 COPY Flask-App /run/Flask-App/
 COPY React-App /run/React-App/

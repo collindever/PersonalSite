@@ -13,7 +13,7 @@ def create_app(config_filename):
 
     @app.route('/')
     def index():
-    	return render_template('index.html')
+        return render_template('index.html')
 
     @app.route('/about')
     def getAbout():
@@ -53,6 +53,10 @@ def create_app(config_filename):
         with open('./app/static/content/' + subDir + "/" + project + "/Content.md") as f:
             article[project] = f.read()
         return dumps(article)
+    
+    @app.route('/health')
+    def health_check():
+        return 'OK', 200
     
     return app
 
