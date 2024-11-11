@@ -1,0 +1,3 @@
+- op: replace
+  path: /spec/template/spec/containers/0/image
+  value: default-registry:36167/resistance-labs-base:v1.0.2
